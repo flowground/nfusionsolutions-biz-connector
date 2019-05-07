@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "token": {
+            "required": true,
+            "type": "string"
+        },
+        "metals": {
+            "required": true,
+            "type": "string"
+        },
+        "start": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "end": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "interval": {
+            "required": false,
+            "type": "string"
+        },
+        "historicalfx": {
+            "required": false,
+            "type": "boolean"
+        },
+        "currency": {
+            "required": false,
+            "type": "string"
+        },
+        "unitofmeasure": {
+            "required": false,
+            "type": "string"
+        },
+        "format": {
+            "required": false,
+            "type": "string"
+        },
+        "version": {
+            "required": true,
+            "type": "string",
+            "default": "1"
+        }
+    }
+}

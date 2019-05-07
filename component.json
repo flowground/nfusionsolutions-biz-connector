@@ -1,0 +1,323 @@
+{
+    "title": "nFusion Solutions Market Data API v1",
+    "description": "[nFusion Solutions](https://nfusionsolutions.com) provides [REST and streaming APIs](https://nfusionsolutions.com/data-feeds/) that deliver enterprise-grade financial data. Data sets include real-time and historical pricing for Spot prices of precious metals such as Gold, Silver, Platinum, and Palladium, exchange rates for major currency pairs, exchange rates for Crypto Currencies such as BTC, ETH, and LTC. All API access requires authentication. In order to be issued access credentials you must first enter into a service agreement with nFusion Solutions and acquire a commercial license. For information on how to obtain a licence [take a tour of our products](https://nfusionsolutions.com/nfusion-solutions-metals-gold-price-feed-tour/) or email sales@nfusionsolutions.com.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/nfusionsolutions.biz/1/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.nfusionsolutions.biz/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ApiV_versionCurrenciesHistoryGet": {
+            "main": "./lib/actions/ApiV_versionCurrenciesHistoryGet.js",
+            "title": "Get historical prices for requested currency pairs",
+            "description": "Historical OHLC data for the specified period and interval size\r\n\r\nThe combination of the interval parameter and start and end dates can result in results\r\nbeing truncated to conform to result size limits. See comments on interval parameter for details on valid interval values.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionCurrenciesHistoryGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionCurrenciesHistorySupportedGet": {
+            "main": "./lib/actions/ApiV_versionCurrenciesHistorySupportedGet.js",
+            "title": "Get list of currency pairs supported by the history endpoint",
+            "description": "Only the currency pairs in the direction noted can be used with the history endpoint.\r\nFor example: USD/CAD is not the same as CAD/USD",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionCurrenciesHistorySupportedGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionCurrenciesRateGet": {
+            "main": "./lib/actions/ApiV_versionCurrenciesRateGet.js",
+            "title": "Get latest mid rate for requested currency pairs",
+            "description": "Current Mid Rate",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionCurrenciesRateGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionCurrenciesRateSupportedGet": {
+            "main": "./lib/actions/ApiV_versionCurrenciesRateSupportedGet.js",
+            "title": "Get list of currencies supported by the rate endpoint",
+            "description": "Any of the currencies in this list can be paired with any other currency in this list when supplied to the Rate endpoint.\r\nFor example: USD/CAD,CAD/USD,USD/EUR,EUR/CAD",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionCurrenciesRateSupportedGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionCurrenciesSummaryGet": {
+            "main": "./lib/actions/ApiV_versionCurrenciesSummaryGet.js",
+            "title": "Get latest Summary for requested currency pairs",
+            "description": "Current and daily summary information combined into a single quote",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionCurrenciesSummaryGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionCurrenciesSummarySupportedGet": {
+            "main": "./lib/actions/ApiV_versionCurrenciesSummarySupportedGet.js",
+            "title": "Get list of currency pairs supported by the Summary endpoint",
+            "description": "Only the currency pairs in the direction noted can be used with the Summary endpoint.\r\nFor example: USD/CAD is not the same as CAD/USD",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionCurrenciesSummarySupportedGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsBenchmarkHistoryGet": {
+            "main": "./lib/actions/ApiV_versionMetalsBenchmarkHistoryGet.js",
+            "title": "Get historical benchmark prices for requested metals",
+            "description": "Historical OHLC data for the specified period and interval size\r\n\r\nThe combination of the interval parameter and start and end dates can result in results\r\nbeing truncated to conform to result size limits. See comments on interval parameter for details on valid interval values.\r\n\r\nThe historicalfx flag is used to determine whether to apply today's fx rates to a historical period, or to apply the historical rates from that same time frame.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsBenchmarkHistoryGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsBenchmarkSummaryGet": {
+            "main": "./lib/actions/ApiV_versionMetalsBenchmarkSummaryGet.js",
+            "title": "Get latest Benchmark prices for requested metals",
+            "description": "Benchmark price information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsBenchmarkSummaryGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsBenchmarkSupportedGet": {
+            "main": "./lib/actions/ApiV_versionMetalsBenchmarkSupportedGet.js",
+            "title": "Get list of symbols supported by the benchmark endpoints",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsBenchmarkSupportedGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsSpotHistoryGet": {
+            "main": "./lib/actions/ApiV_versionMetalsSpotHistoryGet.js",
+            "title": "Get historical Spot prices for requested metals",
+            "description": "Historical OHLC data for the specified period and interval size\r\n\r\nThe combination of the interval parameter and start and end dates can result in results\r\nbeing truncated to conform to result size limits. See comments on interval parameter for details on valid interval values.\r\n\r\nThe historicalfx flag is used to determine whether to apply today's fx rates to a historical period, or to apply the historical rates from that same time frame.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsSpotHistoryGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsSpotPerformanceGet": {
+            "main": "./lib/actions/ApiV_versionMetalsSpotPerformanceGet.js",
+            "title": "Get Historical Performance for requested metals",
+            "description": "Historical Performance information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsSpotPerformanceGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsSpotPerformanceAnnualGet": {
+            "main": "./lib/actions/ApiV_versionMetalsSpotPerformanceAnnualGet.js",
+            "title": "Get Historical Annual Performance for requested metals",
+            "description": "Annual Historical Performance information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsSpotPerformanceAnnualGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsSpotRatioHistoryGet": {
+            "main": "./lib/actions/ApiV_versionMetalsSpotRatioHistoryGet.js",
+            "title": "Get historical Spot Ratio prices for requested metals",
+            "description": "Historical data for the specified period and interval size\r\n\r\nThe combination of the interval parameter and start and end dates can result in results\r\nbeing truncated to conform to result size limits. See comments on interval parameter for details on valid interval values.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsSpotRatioHistoryGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsSpotRatioSummaryGet": {
+            "main": "./lib/actions/ApiV_versionMetalsSpotRatioSummaryGet.js",
+            "title": "Get latest Spot Summary for requested metal ratios",
+            "description": "Ratios between prices of two metals",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsSpotRatioSummaryGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsSpotSummaryGet": {
+            "main": "./lib/actions/ApiV_versionMetalsSpotSummaryGet.js",
+            "title": "Get latest Spot Summary for requested metals",
+            "description": "Current and daily summary information combined into a single quote",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsSpotSummaryGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsSpotSupportedGet": {
+            "main": "./lib/actions/ApiV_versionMetalsSpotSupportedGet.js",
+            "title": "Get list of symbols supported by the spot endpoints",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsSpotSupportedGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApiV_versionMetalsSupportedCurrencyGet": {
+            "main": "./lib/actions/ApiV_versionMetalsSupportedCurrencyGet.js",
+            "title": "Get list of currencies supported by metals endpoints for currency conversion",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApiV_versionMetalsSupportedCurrencyGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

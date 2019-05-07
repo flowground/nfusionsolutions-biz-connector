@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "token": {
+            "required": true,
+            "type": "string"
+        },
+        "metals": {
+            "required": true,
+            "type": "string"
+        },
+        "currency": {
+            "required": false,
+            "type": "string"
+        },
+        "unitofmeasure": {
+            "required": false,
+            "type": "string"
+        },
+        "format": {
+            "required": false,
+            "type": "string"
+        },
+        "adjust": {
+            "required": false,
+            "type": "boolean",
+            "default": true
+        },
+        "version": {
+            "required": true,
+            "type": "string",
+            "default": "1"
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+        "token": {
+            "required": true,
+            "type": "string"
+        },
+        "pairs": {
+            "required": true,
+            "type": "string"
+        },
+        "start": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "end": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "interval": {
+            "required": false,
+            "type": "string"
+        },
+        "format": {
+            "required": false,
+            "type": "string"
+        },
+        "version": {
+            "required": true,
+            "type": "string",
+            "default": "1"
+        }
+    }
+}

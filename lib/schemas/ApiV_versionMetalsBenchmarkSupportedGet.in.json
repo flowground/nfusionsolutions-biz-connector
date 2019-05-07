@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "token": {
+            "required": true,
+            "type": "string"
+        },
+        "format": {
+            "required": false,
+            "type": "string"
+        },
+        "version": {
+            "required": true,
+            "type": "string",
+            "default": "1"
+        }
+    }
+}
